@@ -1,69 +1,31 @@
-# React + TypeScript + Vite
+1. SkillName.tsx
+มีสีตามระดับแบบนี้
+Beginner → สีเขียว
+Intermediate → สีเหลือง/ส้ม
+Expert → สีแดง
+พอส่งข้อมูลสกิลเข้ามา มันก็จะโชว์ชื่อ + สีตามระดับให้อัตโนมัติ
+ทำให้เวลาเราดู เราจะเข้าใจง่าย ๆ ว่าคนนี้เก่งระดับไหนในแต่ละสกิล
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+2. UserProfileCard.tsx
+มันจะรับข้อมูลผู้ใช้มาจาก `App.tsx` (เราโยนเข้ามาเป็น props)
+ข้างในการ์ดจะแสดงพวกนี้:
+ชื่อผู้ใช้
+อีเมล
+รูปโปรไฟล์ (avatar)
+จุดบอกสถานะออนไลน์ (เขียว = ออนไลน์, เทา = ออฟไลน์)
+รายการทักษะ (อันนี้เรียกใช้ `SkillName.tsx` มาช่วยโชว์ทีละทักษะ)
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
+3. App.tsx
+เป็นไฟล์แสดงหน้าเว็บ
+เก็บข้อมูลผู้ใช้หลายคนไว้ใน array เช่น
+  ```ts
   {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+    id: 1,
+    name: "Go",
+    email: "go@example.com",
+    isOnline: true,
+    skills: [
+      { name: "React", level: "Intermediate" },
+      { name: "TypeScript", level: "Beginner" }
+    ]
+  }
